@@ -106,10 +106,56 @@
     align-content: center;
     margin-left: -35px;
     margin-right: -35px;
-    margin-top: -145px; /* Adjust the margin-top as needed to position the images higher */
-    margin-bottom: -5px;
+    margin-top: -85px; /* Adjust the margin-top as needed to position the images higher */
+    margin-bottom: 10px;
+    cursor: pointer; /* Add this line */
       }
+.overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white; /* Change background color to white */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto; /* Allow horizontal scrolling */
+            overflow-y: hidden; /* Disable vertical scrolling */
+        }
 
+        .overlay img {
+            height: 440px;
+            margin-left: 10px;
+        }
+
+        .overlay p {
+            color: black;
+            font-size: 18px;
+            margin-top: -200px;
+            margin-left: 40px;
+            text-align: left;
+        }
+      
+        /* Style the first line of text */
+        .overlay p:first-line {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* Style the text under the first line */
+        .overlay p:not(:first-line) {
+            font-weight: normal;
+            font-size: 18px;
+        }
+
+        /* Grid layout for images in overlay */
+        .overlay .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 10px; /* Gap between images */
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -152,28 +198,71 @@
         </li>
     </ul>
 
-    <div class="text-container">
-        <img src="film.png" alt="film" width="120">
-    </div>
-
     <div class="gallery-container">
       <figure>
-        <a href="https://youtu.be/2lQ6BxVXRNA">
-              <img src="sponge.jpg" alt="sponge" height="425">
-            </a>
+      
+              <img src="sponge.jpg" alt="sponge" height="425" onclick="openOverlay(['sponge.jpg'], 'sponge', 'Canon DSLR Camera', '2023', 'The prompt was to create a silent film which gives an inanimate object emotion. The sponge loses its innocence as it is used and treated poorly which can be humanly related to', 'link to watch: https://www.youtube.com/watch?v=2lQ6BxVXRNA')">
         <figcaption>
             Sponge<br>2023
         </figcaption>
         </figure>
         <figure>
-        <a href="https://youtu.be/w2RGNoVXJLc">
-              <img src="kellys.png" alt="kellys canvas" height="425">
-            </a>
+              <img src="kellys.png" alt="kellys canvas" height="425" onclick="openOverlay(['kellys.png'], 'Kellys Canvas', 'Canon DSLR Camera', '2023', 'Group work, in charge of some shots, editing, and aesthetic choice. Created a documentary highlighting how Kelly chose her path as a tattoo arist and what motivates her on the journey', 'link to watch: https://youtu.be/w2RGNoVXJLc')">
         <figcaption>
             Kelly's Canvas<br>2023
         </figcaption>
         </figure>
     </div>
+  <div class="overlay" onclick="closeOverlay(event)">
+        <div id="overlayImages"></div>
+        <p id="overlayCaption"></p>
+    </div>
+
+    <script>
+        function openOverlay(imageSrcs, title, medium, year, info, extra) {
+            var overlay = document.querySelector('.overlay');
+            var overlayImages = document.getElementById('overlayImages');
+            var overlayCaption = document.getElementById('overlayCaption');
+
+            // Clear any existing images
+            overlayImages.innerHTML = '';
+
+            // If there are only two images, create a grid layout for them
+            if (imageSrcs.length === 2) {
+                var div = document.createElement('div');
+                div.classList.add('image-grid');
+
+                // Create image elements and append them to the grid div
+                imageSrcs.forEach(function(src) {
+                    var img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title;
+                    div.appendChild(img);
+                });
+
+                overlayImages.appendChild(div);
+            } else {
+                // Create image elements and append them to overlayImages div
+                imageSrcs.forEach(function(src) {
+                    var img = document.createElement('img');
+                    img.src = src;
+                    img.alt = title;
+                    overlayImages.appendChild(img);
+                });
+            }
+
+            overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info + "<br>" + "<br>" + extra;
+
+            overlay.style.display = "flex";
+        }
+
+        function closeOverlay(event) {
+            var overlay = document.querySelector('.overlay');
+            if (event.target == overlay) {
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
 
