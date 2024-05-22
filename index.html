@@ -10,38 +10,39 @@
             margin-right: 40px;
             font-size: 20px;
             font-family: "Courier New", monospace;
-            position: fixed; /* Make the sign.png fixed */
-            top: 0; /* Position it at the top */
-            left: 0; /* Position it at the right */
-            padding-left: 10px; /* Add padding for better appearance */
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-left: 10px;
         }
 
         body {
             text-align: center;
             font-size: 16px;
             font-family: "Courier New", monospace;
-            display: flex; /* Add this line */
-            flex-direction: column; /* Add this line */
-            align-items: center; /* Add this line */
-            padding-top: 100px; /* Add padding-top to avoid overlapping with the fixed header */
-           overflow-y: hidden; /* Disable vertical scrolling */
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 100px;
+            overflow-x: hidden;
         }
-      .rect-container {
-        background-color: white;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 25%;
-        height: 100%;
-      }
+
+        .rect-container {
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 25%;
+            height: 100%;
+        }
 
         .container {
             display: flex;
-            justify-content: flex-start; /* Adjusted to move the content to the left */
-            align-items: flex-start; /* Adjusted to align content to the top */
-            width: 80%; /* Adjust as needed */
-            margin-top: 20px; /* Adjust margin-top to create space */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 20px;
         }
 
         ul {
@@ -49,18 +50,17 @@
             margin: 0;
             padding: 0;
             text-align: left;
-            width: 20%; /* Adjust as needed */
-            position: fixed; /* Make the list fixed */
-            left: 0; /* Position it at the left */
-            top: 100px; /* Position it below the fixed header */
-            
+            width: 20%;
+            position: fixed;
+            left: 0;
+            top: 100px;
         }
 
         li {
             font-size: 20px;
             left: 45px;
             top: 90px;
-            position: relative; /* Add this line */
+            position: relative;
         }
 
         a {
@@ -75,106 +75,89 @@
             position: absolute;
         }
 
-        li:hover .hover-image { /* Adjusted to target hover effect on li */
+        li:hover .hover-image {
             display: inline;
             left: -20px;
             bottom: -5px;
         }
 
-        .text-container {
-            width: 40%; /* Adjust as needed */
-            margin-left: 250px; /* Adjust margin-left to create space */
-            text-align: left;
-            
-            
-        }
-
-        .image-container {
-            width: 30%; /* Adjust as needed */
-            margin-left: -100px; /* Adjust margin-left to create space */
-        }
-
         .gallery-container {
-          	align-content: center;
-          margin-left: 985px;
-            top: 10px; 
-            float: left;
             display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 80%;
+            margin-left: 25%;
+        }
+
+        .gallery-container figure {
+            display: inline-block;
+            margin-right: 20px;
         }
 
         .gallery-container img {
-    align-content: center;
-    margin-left: -35px;
-    margin-right: -35px;
-    margin-top: -85px; /* Adjust the margin-top as needed to position the images higher */
-    margin-bottom: 10px;
-    cursor: pointer; /* Add this line */
-      }
-.overlay {
+            cursor: pointer;
+        }
+
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white; /* Change background color to white */
+            background-color: white;
             display: none;
             justify-content: center;
             align-items: center;
-            overflow-x: auto; /* Allow horizontal scrolling */
-            overflow-y: hidden; /* Disable vertical scrolling */
+            overflow-x: auto;
+            overflow-y: hidden;
         }
 
         .overlay img {
             height: 440px;
-            margin-left: 20px;
-            margin-right: -10px;
+            margin-left: 30px;
         }
 
         .overlay p {
             color: black;
             font-size: 18px;
-            margin-top: -200px;
+            margin-top: -300px;
             margin-left: 40px;
             text-align: left;
         }
-      
-        /* Style the first line of text */
+
         .overlay p:first-line {
             font-weight: bold;
             font-size: 24px;
         }
 
-        /* Style the text under the first line */
         .overlay p:not(:first-line) {
             font-weight: normal;
             font-size: 18px;
         }
 
-        /* Grid layout for images in overlay */
         .overlay .image-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Three columns */
-            gap: 10px; /* Gap between images */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
             margin-left: 20px;
         }
     </style>
 </head>
 
 <body>
-
-   <div class="rect-container">
-  </div>
+    <div class="rect-container"></div>
     <h1><img src="sign.png" alt="Name" width="280"></h1>
 
-    <ul>
-        <li>
-              <a href="https://collinyeung.github.io/home/">
+    <div class="container">
+        <ul>
+            <li>
+                <a href="https://collinyeung.github.io/home/">
                     HOME
                     <img class="hover-image" src="circled.png" alt="hover" width="90">
                 </a>
             </li>
             <li>
-                <a href="https://collinyeung.github.io/artwork/">
+                <a href="">
                     ARTWORK
                     <img class="hover-image" src="circled.png" alt="hover" width="130" height="40">
                 </a>
@@ -186,7 +169,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="https://collinyeung.github.io/film/">
                     FILM
                     <img class="hover-image" src="circled.png" alt="hover" width="90" height="40">
                 </a>
@@ -196,59 +179,58 @@
                     CONTACT
                     <img class="hover-image" src="circled.png" alt="hover" width="130" height="40">
                 </a>
-        </li>
-    </ul>
-
-    <div class="gallery-container">
-      <figure>
+            </li>
+        </ul>
+       
+<div class="gallery-container">
+    <figure>
       
-              <img src="plastic.jpg" alt="plastic" height="425" onclick="openOverlay(['plastic.jpg'], 'Your Body is a Masterpiece', 'Procreate', '2024', '', 'link to watch: https://www.youtube.com/shorts/JHnw4jNPIoo')">
+              <img src="plastic.jpg" alt="plastic" height="550" onclick="openOverlay(['plastic.jpg'], 'Your Body is a Masterpiece', 'Procreate', '2024', '', 'link to watch: https://www.youtube.com/shorts/JHnw4jNPIoo')">
         <figcaption>
             Your Body is a Masterpiece<br>2024
         </figcaption>
         </figure>
       <figure>
       
-              <img src="self portraits.PNG" alt="faces" height="425" onclick="openOverlay(['self portraits.PNG'], 'Self Portraits', 'Procreate', '2023', '', 'link to watch: https://vm.tiktok.com/ZMMqxnxPB/')">
+              <img src="self portraits.PNG" alt="faces" height="550" onclick="openOverlay(['self portraits.PNG'], 'Self Portraits', 'Procreate', '2023', '', 'link to watch: https://vm.tiktok.com/ZMMqxnxPB/')">
         <figcaption>
             Self Portraits<br>2023
         </figcaption>
         </figure>
       <figure>
       
-              <img src="sponge.jpg" alt="sponge" height="425" onclick="openOverlay(['sponge.jpg'], 'sponge', 'Canon DSLR Camera', '2023', 'The prompt was to create a silent film which gives an inanimate object emotion. The sponge loses its innocence as it is used and treated poorly which can be humanly related to', 'link to watch: https://www.youtube.com/watch?v=2lQ6BxVXRNA')">
+              <img src="sponge.jpg" alt="sponge" height="550" onclick="openOverlay(['sponge.jpg'], 'sponge', 'Canon DSLR Camera', '2023', 'The prompt was to create a silent film which gives an inanimate object emotion. The sponge loses its innocence as it is used and treated poorly which can be humanly related to', 'link to watch: https://www.youtube.com/watch?v=2lQ6BxVXRNA')">
         <figcaption>
             Sponge<br>2023
         </figcaption>
         </figure>
         <figure>
-              <img src="kellys.png" alt="kellys canvas" height="425" onclick="openOverlay(['kellys.png'], 'Kellys Canvas', 'Canon DSLR Camera', '2023', 'Group work, in charge of some shots, editing, and aesthetic choice. Created a documentary highlighting how Kelly chose her path as a tattoo arist and what motivates her on the journey', 'link to watch: https://youtu.be/w2RGNoVXJLc')">
+              <img src="kellys.png" alt="kellys canvas" height="550" onclick="openOverlay(['kellys.png'], 'Kellys Canvas', 'Canon DSLR Camera', '2023', 'Group work, in charge of some shots, editing, and aesthetic choice. Created a documentary highlighting how Kelly chose her path as a tattoo arist and what motivates her on the journey', 'link to watch: https://youtu.be/w2RGNoVXJLc')">
         <figcaption>
             Kelly's Canvas<br>2023
         </figcaption>
         </figure>
+        </div>
     </div>
-  <div class="overlay" onclick="closeOverlay(event)">
+
+    <div class="overlay" onclick="closeOverlay(event)">
         <div id="overlayImages"></div>
         <p id="overlayCaption"></p>
     </div>
 
     <script>
-        function openOverlay(imageSrcs, title, medium, year, info, extra) {
+        function openOverlay(imageSrcs, title, medium, year, info) {
             var overlay = document.querySelector('.overlay');
             var overlayImages = document.getElementById('overlayImages');
             var overlayCaption = document.getElementById('overlayCaption');
 
-            // Clear any existing images
             overlayImages.innerHTML = '';
 
-            // If there are only two images, create a grid layout for them
             if (imageSrcs.length === 2) {
                 var div = document.createElement('div');
                 div.classList.add('image-grid');
 
-                // Create image elements and append them to the grid div
-                imageSrcs.forEach(function(src) {
+                imageSrcs.forEach(function (src) {
                     var img = document.createElement('img');
                     img.src = src;
                     img.alt = title;
@@ -257,8 +239,7 @@
 
                 overlayImages.appendChild(div);
             } else {
-                // Create image elements and append them to overlayImages div
-                imageSrcs.forEach(function(src) {
+                imageSrcs.forEach(function (src) {
                     var img = document.createElement('img');
                     img.src = src;
                     img.alt = title;
@@ -266,8 +247,7 @@
                 });
             }
 
-            overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info + "<br>" + "<br>" + extra;
-
+            overlayCaption.innerHTML = title + "<br>" + medium + "<br>" + year + "<br>" + "<br>" + info;
             overlay.style.display = "flex";
         }
 
@@ -279,5 +259,5 @@
         }
     </script>
 </body>
-</html>
 
+</html>
